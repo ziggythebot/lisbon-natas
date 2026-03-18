@@ -130,19 +130,25 @@ body {
 .maplibregl-popup-content {
   border: 3px solid #d4a574;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
-  background: linear-gradient(135deg, #fffef8 0%, #fff5e1 100%);
-  color: #000;
+  box-shadow: 0 4px 16px rgba(212, 165, 116, 0.4);
+  background: linear-gradient(to bottom, #fffaf0 0%, #fff5e1 100%);
+  color: #2a1810;
   padding: 16px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .popup-card h3 {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 8px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.25;
+  color: #7a3e1a;
+}
+
+.popup-card h3::before {
+  content: "🥮 ";
+  margin-right: 4px;
 }
 
 .popup-card p {

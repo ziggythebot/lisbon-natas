@@ -65,15 +65,28 @@ export default function MapPageClient({ ecosystemPoints }: MapPageClientProps) {
 
   return (
     <main className="shell">
-      <header className="topbar" style={{ background: 'linear-gradient(135deg, #fff5e1 0%, #ffe4b5 100%)', borderBottom: '3px solid #d4a574' }}>
+      <header className="topbar" style={{
+        background: 'linear-gradient(135deg, #fef3e0 0%, #ffe9c1 50%, #ffd89a 100%)',
+        borderBottom: '4px solid #d4a574',
+        boxShadow: '0 2px 8px rgba(212, 165, 116, 0.3)',
+        backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(212, 165, 116, 0.05) 20px, rgba(212, 165, 116, 0.05) 40px)'
+      }}>
         <div className="topbar-brand">
-          <h1 style={{ color: '#8b4513', fontFamily: 'Georgia, serif', letterSpacing: '0.5px' }}>🥮 Pastéis de Nata em Lisboa 🇵🇹</h1>
+          <h1 style={{
+            color: '#7a3e1a',
+            fontFamily: 'Georgia, serif',
+            letterSpacing: '1px',
+            textShadow: '1px 1px 2px rgba(255, 255, 255, 0.8)',
+            fontSize: '32px'
+          }}>
+            🥮 Pastéis de Nata em Lisboa 🇵🇹
+          </h1>
           <span className="topbar-cta" style={{ color: '#8b6914' }}>
-            [By{" "}
-            <a href="https://x.com/b1rdmania" target="_blank" rel="noreferrer" style={{ color: '#d4a574' }}>
+            [Map by{" "}
+            <a href="https://x.com/b1rdmania" target="_blank" rel="noreferrer" style={{ color: '#d4a574', fontWeight: 'bold' }}>
               b1rdmania
             </a>
-            ] [<span className="mobile-hide">{ecosystemPoints.length} legendary nata spots</span><span className="mobile-hide">]</span>
+            ] [<span className="mobile-hide">{ecosystemPoints.length} legendary nata spots in Lisbon</span><span className="mobile-hide">] 🧁</span>
           </span>
         </div>
         <nav className="topbar-nav" aria-label="Map layers">
