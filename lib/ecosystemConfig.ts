@@ -3,10 +3,10 @@ import { EcosystemType } from "@/lib/types";
 export const ECOSYSTEM_ORDER: EcosystemType[] = ["legendary", "top", "award", "historic"];
 
 export const ECOSYSTEM_META: Record<EcosystemType, { label: string; color: string }> = {
-  legendary: { label: "Legendary", color: "#fbbf24" },
-  top: { label: "Top Quality", color: "#ef4444" },
-  award: { label: "Award-Winning", color: "#8b5cf6" },
-  historic: { label: "Historic", color: "#06b6d4" },
+  legendary: { label: "🏆 Legendary", color: "#ffd700" },
+  top: { label: "⭐ Top Quality", color: "#ff6b6b" },
+  award: { label: "🥇 Award-Winning", color: "#d4a574" },
+  historic: { label: "🏛️ Historic", color: "#8b7355" },
   // Keep old types for compatibility
   vc: { label: "VC", color: "#3b82f6" },
   funding: { label: "Funding", color: "#eab308" },

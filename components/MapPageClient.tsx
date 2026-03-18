@@ -65,21 +65,15 @@ export default function MapPageClient({ ecosystemPoints }: MapPageClientProps) {
 
   return (
     <main className="shell">
-      <header className="topbar">
+      <header className="topbar" style={{ background: 'linear-gradient(135deg, #fff5e1 0%, #ffe4b5 100%)', borderBottom: '3px solid #d4a574' }}>
         <div className="topbar-brand">
-          <h1>London tech heatmap 🔥</h1>
-          <span className="topbar-cta">
+          <h1 style={{ color: '#8b4513', fontFamily: 'Georgia, serif', letterSpacing: '0.5px' }}>🥮 Pastéis de Nata em Lisboa 🇵🇹</h1>
+          <span className="topbar-cta" style={{ color: '#8b6914' }}>
             [By{" "}
-            <a href="https://x.com/b1rdmania" target="_blank" rel="noreferrer">
+            <a href="https://x.com/b1rdmania" target="_blank" rel="noreferrer" style={{ color: '#d4a574' }}>
               b1rdmania
             </a>
-            ] [<span className="mobile-hide">{ecosystemPoints.length} so far</span><span className="mobile-hide">] [</span>
-            <a href="/">Map</a>
-            ] [
-            <a href="/events">Events</a>
-            ] [
-            <a href="/pubs">Pubs</a>
-            ]
+            ] [<span className="mobile-hide">{ecosystemPoints.length} legendary nata spots</span><span className="mobile-hide">]</span>
           </span>
         </div>
         <nav className="topbar-nav" aria-label="Map layers">
