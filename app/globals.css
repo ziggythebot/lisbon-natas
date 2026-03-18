@@ -1,0 +1,751 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: #fff;
+  color: #000;
+  font-family: "Times New Roman", Times, serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.topbar {
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.topbar-brand h1 {
+  font-size: 28px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.topbar-cta {
+  color: #666;
+  font-size: 13px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.topbar-cta a {
+  color: #f00;
+  text-decoration: none;
+}
+
+.topbar-cta a:hover {
+  text-decoration: underline;
+}
+
+.topbar-btn {
+  border: none;
+  background: transparent;
+  color: #000;
+  font-size: 13px;
+  padding: 2px 10px;
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  line-height: 1.2;
+}
+
+.topbar-toggle-label {
+  display: inline-block;
+}
+
+.topbar-btn:hover {
+  opacity: 0.7;
+}
+
+.topbar-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.map-shell {
+  min-height: 0;
+}
+
+.map-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.maplibregl-map {
+  width: 100%;
+  height: 100%;
+}
+
+.maplibregl-ctrl-attrib {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.shell.dark .maplibregl-ctrl-attrib {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.maplibregl-ctrl-attrib a {
+  color: #f00;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.maplibregl-popup-content {
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  color: #000;
+  padding: 14px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13px;
+}
+
+.popup-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.popup-card p {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.popup-meta-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.popup-badge {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-family: "Times New Roman", Times, serif;
+  letter-spacing: 0.03em;
+}
+
+.popup-meta-text {
+  font-size: 11px;
+  color: #606060;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.popup-description {
+  font-size: 13px;
+  color: #2f2f2f;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.popup-address {
+  font-size: 13px;
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.popup-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.popup-btn {
+  border: 1px solid #8f8f8f;
+  border-radius: 4px;
+  padding: 5px 9px;
+  background: #f7f7f7;
+  color: #111;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.popup-btn:hover {
+  background: #efefef;
+}
+
+/* Make close button bigger and easier to tap */
+.maplibregl-popup .maplibregl-popup-close-button {
+  font-size: 32px !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  line-height: 40px !important;
+  text-align: center !important;
+  color: #666 !important;
+  right: 0 !important;
+  top: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.maplibregl-popup .maplibregl-popup-close-button:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+  color: #000 !important;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 12px;
+  }
+
+  .topbar-brand {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .topbar-brand h1 {
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .topbar-cta {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  /* Hide count on mobile so nav links fit */
+  .mobile-hide {
+    display: none;
+  }
+
+  /* Hide Share/Embed links on mobile */
+  .share-embed-links {
+    display: none;
+  }
+
+  /* Hide category toggles on mobile for map page only */
+  .topbar-nav {
+    display: none;
+  }
+
+  /* But show toggles on events page */
+  body:has([aria-label="Event categories"]) .topbar-nav {
+    display: flex;
+    width: 100%;
+    margin-top: 8px;
+    gap: 4px;
+  }
+
+  /* Make toggle buttons smaller on mobile events page */
+  body:has([aria-label="Event categories"]) .topbar-btn {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+
+  body:has([aria-label="Event categories"]) .topbar-toggle-label {
+    font-size: 11px;
+  }
+
+  /* Keep CTA visible but smaller */
+  .topbar-cta {
+    font-size: 10px;
+  }
+}
+
+/* Dark mode */
+.shell.dark {
+  background: #000;
+  color: #fff;
+}
+
+.shell.dark .topbar {
+  border-bottom: 1px solid #333;
+  background: #000;
+}
+
+.shell.dark .topbar-cta {
+  color: #999;
+}
+
+.shell.dark .topbar-cta a {
+  color: #f00;
+}
+
+.shell.dark .topbar-btn {
+  color: #fff;
+}
+
+.shell.dark .maplibregl-popup-content {
+  border: 1px solid #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  background: #000;
+  color: #fff;
+}
+
+.shell.dark .popup-meta-text,
+.shell.dark .popup-description {
+  color: #bdbdbd;
+}
+
+.shell.dark .popup-btn {
+  border: 1px solid #555;
+  background: #151515;
+  color: #fff;
+}
+
+.shell.dark .popup-btn:hover {
+  background: #1f1f1f;
+}
+
+/* Credits footer */
+.map-credits {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-size: 11px;
+  color: #666;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 10px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.map-credits a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.map-credits a:hover {
+  text-decoration: underline;
+}
+
+.shell.dark .map-credits {
+  background: rgba(0, 0, 0, 0.8);
+  color: #999;
+}
+
+.shell.dark .map-credits a {
+  color: #ddd;
+}
+
+@media (max-width: 860px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .topbar-nav {
+    width: 100%;
+  }
+}
+
+/* Embed mode - full screen map, no header */
+.shell.embed-mode {
+  grid-template-rows: 1fr;
+}
+
+.shell.embed-mode .topbar {
+  display: none;
+}
+
+/* Embed code generator */
+.embed-generator {
+  min-height: 100vh;
+  background: #fafafa;
+  padding: 40px 20px;
+}
+
+.embed-generator-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 40px;
+  border-radius: 4px;
+}
+
+.embed-generator-header {
+  margin-bottom: 40px;
+}
+
+.embed-generator-header h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.embed-generator-header p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.embed-generator-options h2,
+.embed-generator-preview h2,
+.embed-generator-code h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.embed-generator-options,
+.embed-generator-preview,
+.embed-generator-code {
+  margin-bottom: 40px;
+}
+
+.category-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.category-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.category-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.category-checkbox-indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.category-checkbox-label {
+  font-size: 14px;
+}
+
+.embed-preview-frame {
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.code-block {
+  position: relative;
+  background: #1f1f1f;
+  color: #f0f0f0;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.code-block pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.copy-btn:hover {
+  background: #444;
+}
+
+.code-instructions {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.embed-generator-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.back-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .embed-generator-container {
+    padding: 24px;
+  }
+
+  .embed-generator-header h1 {
+    font-size: 24px;
+  }
+
+  .category-checkboxes {
+    gap: 12px;
+  }
+
+  .embed-preview-frame iframe {
+    height: 300px;
+  }
+}
+
+/* Hide MapLibre attribution control (legally required OSM attribution) */
+.maplibregl-ctrl-attrib {
+  display: none !important;
+}
+
+/* Events Page */
+.events-page {
+  min-height: 100vh;
+  background: #fff;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.events-header {
+  border-bottom: 1px solid #ddd;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.events-header h1 {
+  font-size: 36px;
+  font-weight: normal;
+  margin: 0 0 8px 0;
+}
+
+.events-header p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.events-filters {
+  padding: 24px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.events-filters button {
+  padding: 8px 16px;
+  border: 1px solid;
+  background: transparent;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: capitalize;
+}
+
+.events-filters button:hover {
+  opacity: 0.8;
+}
+
+.events-filters button.active {
+  color: #fff;
+}
+
+.events-loading {
+  padding: 48px;
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+.events-grid {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.event-card {
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.event-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-color: #f5f5f5;
+}
+
+.event-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.event-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.event-category {
+  padding: 4px 8px;
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 2px;
+}
+
+.event-date {
+  color: #666;
+}
+
+.event-title {
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.event-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.event-location {
+  font-size: 13px;
+  color: #666;
+  margin-top: auto;
+}
+
+.event-organizer {
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+}
+
+.events-footer {
+  padding: 32px 24px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+.events-footer .back-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.events-footer .back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .events-grid-container {
+    grid-template-columns: 1fr !important;
+    padding: 16px !important;
+    gap: 16px !important;
+  }
+
+  .events-header h1 {
+    font-size: 28px;
+  }
+
+  .events-filters {
+    padding: 16px;
+  }
+}
+
+/* Or make it very minimal if you want to keep legal compliance */
+.maplibregl-ctrl-bottom-right {
+  opacity: 0.3;
+  font-size: 8px;
+}
+
+.maplibregl-ctrl-bottom-right:hover {
+  opacity: 1;
+}
