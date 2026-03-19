@@ -4,10 +4,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Pastéis de Nata em Lisboa 🥮",
-  description: "Discover the best pastel de nata shops in Lisbon. 20 legendary locations from Pastéis de Belém to hidden neighborhood gems.",
+  description: "Discover the best pastel de nata shops in Lisbon. 25 legendary locations from Pastéis de Belém to hidden neighborhood gems.",
   openGraph: {
     title: "Pastéis de Nata em Lisboa 🥮",
-    description: "Discover the best pastel de nata shops in Lisbon. 20 legendary locations from Pastéis de Belém to hidden neighborhood gems.",
+    description: "Discover the best pastel de nata shops in Lisbon. 25 legendary locations from Pastéis de Belém to hidden neighborhood gems.",
     url: "https://lisbon-natas.vercel.app",
     siteName: "Lisbon Pastel de Nata Map",
     images: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Pastéis de Nata em Lisboa 🥮",
-    description: "Discover the best pastel de nata shops in Lisbon. 20 legendary locations from Pastéis de Belém to hidden neighborhood gems.",
+    description: "Discover the best pastel de nata shops in Lisbon. 25 legendary locations from Pastéis de Belém to hidden neighborhood gems.",
     images: ["/nata-og.png"]
   },
   robots: {
