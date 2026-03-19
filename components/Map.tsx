@@ -159,7 +159,7 @@ export default function Map({ ecosystemPoints, enabledTypes, darkMode = false }:
           customAttribution: '<a href="https://x.com/b1rdmania" target="_blank" rel="noreferrer">Made for OpenClaw Lisbon 🥮</a>'
         }}
       >
-        {enabledTypes.length ? (
+        {enabledTypes.length && mapLoaded ? (
           <Source id="ecosystem" type="geojson" data={ecosystemGeoJson}>
             {enabledTypes.map((type) => (
               <Layer key={type} {...categoryLayer(type)} />
