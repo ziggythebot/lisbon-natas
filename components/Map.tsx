@@ -38,20 +38,19 @@ function categoryLayer(type: EcosystemType): LayerProps {
   const meta = ECOSYSTEM_META[type];
   return {
     id: layerId(type),
-    type: "circle",
+    type: "symbol",
     source: "ecosystem",
     filter: ["==", ["get", "type"], type],
-    paint: {
-      "circle-color": meta.color,
-      "circle-radius": [
+    layout: {
+      "icon-image": "nata-icon",
+      "icon-size": [
         "interpolate",
         ["linear"],
         ["zoom"],
-        10, 8,  // At zoom 10 (zoomed out), radius 8
-        14, 10  // At zoom 14 (zoomed in), radius 10
+        10, 0.3,  // At zoom 10 (zoomed out), size 0.3
+        14, 0.5   // At zoom 14 (zoomed in), size 0.5
       ],
-      "circle-stroke-width": 1,
-      "circle-stroke-color": "#ffffff"
+      "icon-allow-overlap": true
     }
   };
 }
@@ -59,7 +58,28 @@ function categoryLayer(type: EcosystemType): LayerProps {
 export default function Map({ ecosystemPoints, enabledTypes, darkMode = false }: MapProps) {
   const mapRef = useRef<MapRef | null>(null);
   const [popupEcosystemId, setPopupEcosystemId] = useState<string | null>(null);
+  const [mapLoaded, setMapLoaded] = useState(false);
   const interactiveLayerIds = enabledTypes.map(layerId);
+
+  const onMapLoad = () => {
+    const map = mapRef.current?.getMap();
+    if (!map) return;
+
+    // Load the nata icon
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      if (!map.hasImage('nata-icon')) {
+        map.addImage('nata-icon', img);
+      }
+      setMapLoaded(true);
+    };
+    img.onerror = (error) => {
+      console.error('Error loading nata icon:', error);
+      setMapLoaded(true); // Still set loaded to show circles if icon fails
+    };
+    img.src = '/nata-marker.png';
+  };
 
   const ecosystemGeoJson = useMemo(
     () => ({
@@ -131,6 +151,7 @@ export default function Map({ ecosystemPoints, enabledTypes, darkMode = false }:
         mapStyle={darkMode ? "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json" : "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"}
         interactiveLayerIds={interactiveLayerIds}
         onClick={onMapClick}
+        onLoad={onMapLoad}
         dragRotate={false}
         touchPitch={false}
         attributionControl={{
